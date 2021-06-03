@@ -1,0 +1,7 @@
+{
+  "name": "KA-THANI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
