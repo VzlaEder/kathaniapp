@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-back-button slot="start" defaultHref="/home/glucose-control"></ion-back-button>
+    <ion-title>Glucosa en la sangre</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img class="full-image" src="../../../assets/images/control_glucemia.jpg" />
+    <ion-card-header>
+      <ion-card-title>Monitoreo de glucemia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      A través de esta sección podrás realizar un mejor seguimiento de tu patología.
+    </ion-card-content>
+        <ion-item>
+          <ion-input clearInput type="number" class="ion-padding-end ion-text-center"
+            placeholder="Indice de glucosa en la sangre"  [(ngModel)]="postGlucoseData.nivel_glusemia"></ion-input>mg/dL
+        </ion-item>
+        <ion-item>
+          <ion-label>Fecha:</ion-label>
+          <ion-datetime placeholder="Selecciona la fecha" [(ngModel)]="postGlucoseData.fecha"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Hora</ion-label>
+          <ion-datetime placeholder="Indica la hora" display-format="HH:mm " picker-format="HH:mm " [(ngModel)]="postGlucoseData.hora"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Periodo</ion-label>
+          <ion-select [(ngModel)]="postGlucoseData.comida"  interface="popover">
+            <ion-select-option value="ayuno">Ayuno</ion-select-option>
+            <ion-select-option value="Antes de comida">Antes de comida</ion-select-option>
+            <ion-select-option value="Despues de comer">Depués de comer</ion-select-option>
+            <ion-select-option value="antes de acostarse">Antes de acostarse</ion-select-option>
+            <ion-select-option value="otro">Otro</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="center ion-padding-top">
+          <ion-button (click)="glucoseDataUP()" shape="round">Registrar</ion-button>
+        </div>
+  </ion-card>
+</ion-content>

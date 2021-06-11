@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-back-button slot="start" defaultHref="/home/weith-control"></ion-back-button>
+    <ion-title>Registro de peso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img class="full-image" src="../../../assets/images/peso.jpg" />
+    <ion-card-header>
+      <ion-card-title>Monitoreo de peso</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Matener es control de tu peso es de suma importancia para garantizar una vida saludable.
+    </ion-card-content>
+    <ion-item>
+      <ion-input clearInput type="number" class="ion-padding-end ion-text-center"
+        placeholder="Indica tu peso actual" [(ngModel)]="postWeigthData.peso"></ion-input>Kg
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha:</ion-label>
+      <ion-datetime placeholder="Selecciona la Fecha" [(ngModel)]="postWeigthData.fecha"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora:</ion-label>
+      <ion-datetime display-format="HH:mm " picker-format="HH:mm" placeholder="Selecciona la Hora" [(ngModel)]="postWeigthData.hora"></ion-datetime>
+    </ion-item>
+    <div class="center ion-padding-top">
+      <ion-button (click)="weight()" shape="round">Registrar</ion-button>
+    </div>
+  </ion-card>
+</ion-content>

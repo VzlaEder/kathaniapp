@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-back-button slot="start" defaultHref="/home/inicio"></ion-back-button>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div class="ion-padding-top" style="display: flex; align-items: center;justify-content: center;">
+      <img class="img" src="../../../assets/images/avatar.png" />
+    </div>
+    <ion-card-content>
+      <ion-item>
+        <ion-label color="medium">Nombre:</ion-label>
+        <ion-input type="text" class="ion-text-end">{{datosMember.nombre}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="medium">Apellido(s):</ion-label>
+        <ion-input type="text" class="ion-text-end">{{datosMember.apellido}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="medium">Fecha de nacimiento:</ion-label>
+        <ion-input type="number" class="ion-text-end">{{datosMember.fecha_nacimiento}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="medium">Correo:</ion-label>
+        <ion-input type="text" class="ion-text-end">{{datosMember.correo}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="medium">Contraseña</ion-label>
+        <ion-button color="medium">Cambiar</ion-button>
+      </ion-item>
+      <ion-button  color="success" expand="full" shape="round">Guardar</ion-button>
+      <ion-button  expand="full" shape="round">Cancelar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

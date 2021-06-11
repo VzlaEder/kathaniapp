@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tú peso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Tu peso actual</ion-label>
+      <ion-img src="assets/images/graficas.svg" alt=""></ion-img>
+    </ion-item>
+    <ion-list>
+      <ion-label position="stacked">Opciones</ion-label>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div>
+                <ion-button shape="round" (click)="navigateToPesoHistory()" expand="full" color="success">Hitorial de peso registrado</ion-button>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-button shape="round" (click)="navigateToRegistroPeso()" expand="full" color="success">Regristra tu peso </ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title class="start">Iniciar sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="contenedor" class="centrar">
+  <div class="center">
+    <app-logo></app-logo>
+  </div>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Correo electrónico</ion-label>
+        <ion-input type="text" name="email" [(ngModel)]="postData.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="postData.password"></ion-input>
+      </ion-item>
+      <ion-button (click)="loginAction()" expand="block" shape="round">
+        Ingresar
+      </ion-button>
+      <br>
+        <div class="center ion-padding-top">
+          <a href="/recuperarcontra">¿Olvidaste tu contraseña?</a>
+        </div>
+    </ion-list>
+  </form>
+</ion-content>

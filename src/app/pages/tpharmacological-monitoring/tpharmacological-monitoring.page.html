@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-back-button slot="start" defaultHref="/home/treatment-control"></ion-back-button>
+    <ion-title>Farmacológicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <ion-grid>
+   <div *ngIf="cardDataTreatment.length > 0;else other_content">
+      <ion-col *ngFor="let treatmentfollowup of cardDataTreatment">
+          <ion-card>
+            <img class="full-image" src="../../../assets/images/tensionarterial.jpg" />
+            <ion-card-header>
+              <ion-card-title>{{treatmentfollowup.medicine.name}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{treatmentfollowup.medicine.description}}
+            </ion-card-content>
+            <ion-card-subtitle class="ion-text-center">Si cumpliste con este tratamiento, registralo aquí.
+            </ion-card-subtitle>
+            <div class="center ion-padding-top">
+              <ion-button (click)="postTreatmentId(treatmentfollowup)" shape="round">Registrar</ion-button>
+            </div>
+          </ion-card>
+        </ion-col>
+    </div>
+    <ng-template #other_content>
+      <h1 ><b>Sin registros</b></h1>
+    </ng-template>
+  </ion-grid>
+</ion-content>
