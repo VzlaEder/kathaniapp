@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlucoseService } from '../../services/glucose.service'
+import { GlucoseService } from '../../services/glucose.service';
 
 @Component({
   selector: 'app-card-gh',
@@ -10,15 +10,34 @@ export class CardGhComponent implements OnInit {
 
   cardDataG: any;
 
-  constructor(private glucoseService:GlucoseService) { }
+  constructor(private glucoseService: GlucoseService) { }
 
   ngOnInit() {
     this.glucoseService.glucoseH.subscribe(res=>{
       this.cardDataG = res;
-    })
-
-    console.log(this.cardDataG)
+    });
+    console.log(this.cardDataG);
   }
 
+  color(val: number) {
 
-}
+    if(val<70 || val>125){
+      return 'danger';
+    }else if( val >= 101 && val <= 125){
+      return 'warning';
+    }
+    return 'success';
+    }
+
+    placeholder(val: number) {
+
+    if(val<70 || val>125){
+      return 'Riesgo alto';
+    }else if( val >= 101 && val <= 125){
+      return 'Riesgo medio';
+    }
+    return 'Sin riesgos';
+    }
+
+  }
+

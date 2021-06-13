@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ToastService } from '../../services/toast.service'
-import { AuthService } from '../../services/auth.service'
-import { LoginResSeccesI, LoginResWornI, LoginNoConnectI } from '../../models/loginres.interface';
+import { ToastService } from '../../services/toast.service';
+import { AuthService } from '../../services/auth.service';
+import { LoginResSeccesI} from '../../models/loginres.interface';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
   public postData = {
     email: '',
     password: ''
-  }
+  };
 
   constructor(private router: Router, private authService: AuthService,private toastService:ToastService) { }
 
@@ -34,16 +34,16 @@ export class LoginPage implements OnInit {
   loginAction() {
     if (this.validateInputs()) {
       this.authService.login(this.postData).subscribe((res: any) => {
-        console.log(res)
+        console.log(res);
         let datasuccess: LoginResSeccesI = res;
-          localStorage.setItem("token", datasuccess.access_token)
-          localStorage.setItem("member",JSON.stringify(datasuccess.member))
+          localStorage.setItem("token", datasuccess.access_token);
+          localStorage.setItem("member",JSON.stringify(datasuccess.member));
           this.router.navigate(['home']);
       },
         (HttpErrorResponse: any) => {
-          console.log(HttpErrorResponse)
-          let messageError = HttpErrorResponse.error.message
-          this.toastService.presentToast(messageError)
+          console.log(HttpErrorResponse);
+          let messageError = HttpErrorResponse.error.message;
+          this.toastService.presentToast(messageError);
         }
       )
     }

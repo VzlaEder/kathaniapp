@@ -25,9 +25,11 @@ var GlucoseLogPage = /** @class */ (function () {
         var _this = this;
         this.glucoseService.glucoseUP(this.postGlucoseData).subscribe(function (res) {
             console.log(res);
-        }, function (HttpErrorResponse) {
-            console.log(HttpErrorResponse);
-            var messageError = HttpErrorResponse.error.message;
+            var messageSuccess = res.message;
+            _this.toastService.presentToast(messageSuccess);
+        }, function (err) {
+            console.log(err);
+            var messageError = err.error.message;
             _this.toastService.presentToast(messageError);
         });
     };

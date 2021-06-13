@@ -19,6 +19,7 @@ var TPharmacologicalHistoryPage = /** @class */ (function () {
     TPharmacologicalHistoryPage.prototype.getTreatmentHistory = function () {
         var _this = this;
         this.treatmentService.treatmentHistory().subscribe(function (res) {
+            console.log(res);
             _this.cardDataTreatment = res.data;
             console.log(_this.cardDataTreatment);
         }, function (HttpErrorResponse) {

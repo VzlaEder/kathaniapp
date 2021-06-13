@@ -19,7 +19,6 @@ export class HttpService {
   }
 
   get(serviceName: string) {
-    console.log(localStorage.getItem('token'))
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' +  localStorage.getItem('token')

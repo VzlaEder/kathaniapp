@@ -5,125 +5,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding-top">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div>
-          <ion-card>
-            <img class="full-image" src="../../../assets/images/descanso.jpg" />
-            <ion-card-header>
-              <ion-card-title>Horas de descanso</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              Recuerda que debes descansar un mínimo de ocho horas al día.
-            </ion-card-content>
-
-            <ion-card-subtitle class="ion-text-center">¿Descansaste suficiente hoy?</ion-card-subtitle>
-            <ion-radio-group value="grape">
-              <ion-item>
-                <ion-label>Sí</ion-label>
-                <ion-radio slot="end" color="success" value="apple"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>No</ion-label>
-                <ion-radio slot="end" color="danger" value="cherry"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-            <div class="center ion-padding-top">
-              <ion-button shape="round">Registrar</ion-button>
-            </div>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div>
-          <ion-card>
-            <img class="full-image" src="../../../assets/images/deporte.jpg" />
-            <ion-card-header>
-              <ion-card-title>Rutina deportiva</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              Realizar algún tipo de deporte ayuda a mejorar tu salud, por eso es importante mantener una rutina
-              deportiva.
-            </ion-card-content>
-            <ion-card-subtitle class="ion-text-center">¿Realizaste tu rutina deportiva hoy?</ion-card-subtitle>
-            <ion-radio-group value="grape">
-              <ion-item>
-                <ion-label>Sí</ion-label>
-                <ion-radio slot="end" color="success" value="apple"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>No</ion-label>
-                <ion-radio slot="end" color="danger" value="cherry"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-            <div class="center ion-padding-top">
-              <ion-button shape="round">Registrar</ion-button>
-            </div>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div>
-          <ion-card>
-            <img class="full-image" src="../../../assets/images/agua.jpg" />
-            <ion-card-header>
-              <ion-card-title>Consumo de agua.</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              Mantener tu cuerpo hidratado es importante, por eso debes consumir mínimo ocho vasos de agua al día.
-            </ion-card-content>
-            <ion-card-subtitle class="ion-text-center">¿Consumiste suficiente agua hoy?</ion-card-subtitle>
-            <ion-radio-group value="grape">
-              <ion-item>
-                <ion-label>Sí</ion-label>
-                <ion-radio slot="end" color="success" value="apple"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>No</ion-label>
-                <ion-radio slot="end" color="danger" value="cherry"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-            <div class="center ion-padding-top">
-              <ion-button shape="round">Registrar</ion-button>
-            </div>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div>
-          <ion-card>
-            <img class="full-image" src="../../../assets/images/dieta.jpg" />
-            <ion-card-header>
-              <ion-card-title>Alimentación.</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              Mantener una dieta saludable es de suma importancia para tu salud.
-            </ion-card-content>
-            <ion-card-subtitle class="ion-text-center">¿Seguiste tu dieta hoy?</ion-card-subtitle>
-            <ion-radio-group value="grape">
-              <ion-item>
-                <ion-label>Sí</ion-label>
-                <ion-radio slot="end" color="success" value="apple"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>No</ion-label>
-                <ion-radio slot="end" color="danger" value="cherry"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-            <div class="center ion-padding-top">
-              <ion-button shape="round">Registrar</ion-button>
-            </div>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content>
+  <div *ngIf="cardDataTreatment?.length > 0; else other_content">
+    <ion-card *ngFor="let treatment of cardDataTreatment">
+      <ion-card-header color="success">
+        <ion-card-title>{{treatment.actividad}}</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label color="medium">Duración: </ion-label>
+        {{treatment.duracion}}
+      </ion-item>
+      <ion-item>
+        <ion-label color="medium">Hora recomendada:</ion-label>
+        {{treatment.hora}}
+      </ion-item>
+      <div class="center ion-padding-top">
+        <ion-button (click)="postTreatmentId(treatment)" shape="round">Registrar</ion-button>
+      </div>
+    </ion-card>
+  </div>
+  <ng-template #other_content>
+    <h1 class="center">
+      <img src="../../../assets/images/No_data.svg" />
+      <br>Sin registros</h1>
+  </ng-template>
 </ion-content>
+

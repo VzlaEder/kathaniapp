@@ -12,6 +12,7 @@ var TNonPharmacologicalHistoryPage = /** @class */ (function () {
     function TNonPharmacologicalHistoryPage(notreatmentService, toastService) {
         this.notreatmentService = notreatmentService;
         this.toastService = toastService;
+        this.datosMember = JSON.parse(localStorage.getItem('member'));
     }
     TNonPharmacologicalHistoryPage.prototype.ngOnInit = function () {
         this.getTreatmentNonHistory();

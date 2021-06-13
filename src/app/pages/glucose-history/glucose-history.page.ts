@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlucoseService } from '../../services/glucose.service'
+import { GlucoseService } from '../../services/glucose.service';
 
 @Component({
   selector: 'app-glucose-history',
@@ -9,19 +9,17 @@ import { GlucoseService } from '../../services/glucose.service'
 export class GlucoseHistoryPage implements OnInit {
 
 
-  constructor(private glucoseService: GlucoseService) { }
+  constructor(private glucoseService: GlucoseService) {
+    this.getGlucoseHistory();
+  }
 
-  ngOnInit() {
-    this.getGlucoseHistory()
-   }
+  ngOnInit() {}
 
-getGlucoseHistory(){
-  this.glucoseService.glucoseHistory().subscribe((res:any) =>{
-  console.log(res.data)
-
-  this.glucoseService.changeGlucoseHistory(res.data)
-
-  })
-}
+  getGlucoseHistory(){
+    this.glucoseService.glucoseHistory().subscribe((res: any) =>{
+      console.log(res.data);
+      this.glucoseService.changeGlucoseHistory(res.data);
+    });
+  }
 
 }

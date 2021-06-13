@@ -9,8 +9,8 @@ exports.__esModule = true;
 exports.HomePage = void 0;
 var core_1 = require("@angular/core");
 var HomePage = /** @class */ (function () {
-    function HomePage(AuthService) {
-        this.AuthService = AuthService;
+    function HomePage(authService) {
+        this.authService = authService;
         this.appPages = [
             { title: 'Perfil', url: '/home/profile', icon: 'person' },
             { title: 'Notificaciones', url: '/home/notifications', icon: 'notifications' },
@@ -26,7 +26,7 @@ var HomePage = /** @class */ (function () {
         console.log(this.datosMember);
     };
     HomePage.prototype.logout = function () {
-        this.AuthService.logout();
+        this.authService.logout();
     };
     HomePage = __decorate([
         core_1.Component({

@@ -14,13 +14,13 @@ var NotreatmentService = /** @class */ (function () {
         this.httpService = httpService;
     }
     NotreatmentService.prototype.treatmentNoHistory = function () {
-        return this.httpService.get("");
+        return this.httpService.get("movil-diabetic/activity");
     };
     NotreatmentService.prototype.treatmentNoList = function () {
-        return this.httpService.get("");
+        return this.httpService.get("movil-diabetic/register-activity");
     };
     NotreatmentService.prototype.treatmentNoRegID = function (postData) {
-        return this.httpService.posttoken("", postData);
+        return this.httpService.posttoken("movil-diabetic/continue-activity", postData);
     };
     NotreatmentService = __decorate([
         core_1.Injectable({

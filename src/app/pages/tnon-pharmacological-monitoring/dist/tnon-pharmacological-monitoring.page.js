@@ -12,8 +12,10 @@ var TNonPharmacologicalMonitoringPage = /** @class */ (function () {
     function TNonPharmacologicalMonitoringPage(toastService, notreatmentService) {
         this.toastService = toastService;
         this.notreatmentService = notreatmentService;
+        this.datosMember = JSON.parse(localStorage.getItem('member'));
     }
     TNonPharmacologicalMonitoringPage.prototype.ngOnInit = function () {
+        this.getTreatmentList();
     };
     TNonPharmacologicalMonitoringPage.prototype.getTreatmentList = function () {
         var _this = this;
@@ -26,14 +28,16 @@ var TNonPharmacologicalMonitoringPage = /** @class */ (function () {
         var _this = this;
         console.log(treatmentfollowup);
         var data = {
-            patient_treatment_id: treatmentfollowup.id
+            activity_treatment_id: treatmentfollowup.id
         };
         console.log(data);
         this.notreatmentService.treatmentNoRegID(data).subscribe(function (res) {
             console.log(res);
-        }, function (HttpErrorResponse) {
-            console.log(HttpErrorResponse);
-            var messageError = HttpErrorResponse.error.message;
+            var messageSuccess = res.message;
+            _this.toastService.presentToast(messageSuccess);
+        }, function (err) {
+            console.log(err);
+            var messageError = err.error.message;
             _this.toastService.presentToast(messageError);
         });
     };

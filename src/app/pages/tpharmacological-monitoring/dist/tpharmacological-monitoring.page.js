@@ -31,10 +31,12 @@ var TPharmacologicalMonitoringPage = /** @class */ (function () {
         };
         console.log(data);
         this.treatmentService.treatmentRegID(data).subscribe(function (res) {
+            var messageSuccess = res.message;
+            _this.toastService.presentToast(messageSuccess);
             console.log(res);
-        }, function (HttpErrorResponse) {
-            console.log(HttpErrorResponse);
-            var messageError = HttpErrorResponse.error.message;
+        }, function (err) {
+            console.log(err);
+            var messageError = err.error.message;
             _this.toastService.presentToast(messageError);
         });
     };

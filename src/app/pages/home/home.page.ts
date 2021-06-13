@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service'
-
-
-
-
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -24,18 +20,16 @@ export class HomePage implements OnInit {
     { title: 'Tus estadísticas', url: '/home/statistics', icon: 'stats-chart' },
     { title: 'Califica nuestro servicio', url: '/home/qualify', icon: 'warning' }
   ];
-  constructor(private AuthService: AuthService){}
-
-  
+  constructor(private authService: AuthService){}
 
   ngOnInit() {
-    console.log(this.datosMember)
+    console.log(this.datosMember);
   }
 
   logout(){
-    this.AuthService.logout()
+    this.authService.logout();
   }
 
-  datosMember = JSON.parse(localStorage.getItem('member'))
-  
+  datosMember = JSON.parse(localStorage.getItem('member'));
+
 }

@@ -10,8 +10,8 @@ export class ProfilePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.datosMember)
+    console.log(this.datosMember);
   }
 
-  datosMember = JSON.parse(localStorage.getItem('member'))
+  datosMember = JSON.parse(localStorage.getItem('member'));
 }

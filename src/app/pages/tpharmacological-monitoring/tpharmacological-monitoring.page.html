@@ -5,6 +5,7 @@
   </ion-toolbar>
 </ion-header>
 
+<!--
 <ion-content class="ion-padding-top">
   <ion-grid>
    <div *ngIf="cardDataTreatment.length > 0;else other_content">
@@ -19,9 +20,6 @@
             </ion-card-content>
             <ion-card-subtitle class="ion-text-center">Si cumpliste con este tratamiento, registralo aquí.
             </ion-card-subtitle>
-            <div class="center ion-padding-top">
-              <ion-button (click)="postTreatmentId(treatmentfollowup)" shape="round">Registrar</ion-button>
-            </div>
           </ion-card>
         </ion-col>
     </div>
@@ -29,4 +27,28 @@
       <h1 ><b>Sin registros</b></h1>
     </ng-template>
   </ion-grid>
+</ion-content>
+-->
+<ion-content>
+  <div *ngIf="cardDataTreatment?.length > 0; else other_content">
+    <ion-card *ngFor="let treatmentfollowup of cardDataTreatment">
+      <ion-card-header  color="success">
+        <ion-card-title>Medicamento: {{treatmentfollowup.medicine.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label color="medium">Descripción: </ion-label>
+          {{treatmentfollowup.medicine.description}}
+        </ion-item>
+      </ion-card-content>
+      <div class="center ion-padding-top">
+        <ion-button (click)="postTreatmentId(treatmentfollowup)" shape="round">Registrar</ion-button>
+      </div>
+    </ion-card>
+  </div>
+  <ng-template #other_content>
+    <h1 class="center">
+      <img src="../../../assets/images/No_data.svg" />
+      <br>Sin registros</h1>
+  </ng-template>
 </ion-content>

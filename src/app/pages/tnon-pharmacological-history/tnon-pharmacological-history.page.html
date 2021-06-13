@@ -6,48 +6,34 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item-group>
-      <ion-item color="tertiary" lines="none">
-        <ion-label>Plan de ejercicios</ion-label>
+  <div *ngIf="cardDataTreatment?.length > 0; else other_content">
+    <ion-card *ngFor="let treatment of cardDataTreatment">
+      <ion-card-header color="success">
+        <ion-card-title>{{treatment.actividad}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+      <ion-item>
+        <ion-label color="medium">Periodo: </ion-label>
+        {{treatment.duracion}}
       </ion-item>
-      <ion-item-divider color="light">
-        <ion-col>
-          <ion-label color="dark">Horas diarias</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label color="dark">Horas semanales</ion-label>
-        </ion-col>
-      </ion-item-divider>
-      <ion-item-divider>
-        <ion-col>
-          <ion-label>1 h</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label>5 h </ion-label>
-        </ion-col>
-      </ion-item-divider>
-    </ion-item-group>
-    <ion-item-group>
-      <ion-item color="tertiary" lines="none">
-        <ion-label>Plan de alimentación</ion-label>
+      <ion-item>
+        <ion-label color="medium">Hora recomendada: </ion-label>
+        {{treatment.hora}}
       </ion-item>
-      <ion-item-divider color="light">
-        <ion-col>
-          <ion-label color="dark">Calorías diarias</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label color="dark">Calorías Semanales</ion-label>
-        </ion-col>
-      </ion-item-divider>
-      <ion-item-divider>
-        <ion-col>
-          <ion-label>2000 c</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label>13000 c </ion-label>
-        </ion-col>
-      </ion-item-divider>
-    </ion-item-group>
-  </ion-list>
+    </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header color="success">
+        <ion-card-title>Dieta</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{datosMember.diabetic_patient.dieta}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ng-template #other_content>
+    <h1 class="center">
+      <img src="../../../assets/images/No_data.svg" />
+      <br>Sin registros</h1>
+  </ng-template>
 </ion-content>

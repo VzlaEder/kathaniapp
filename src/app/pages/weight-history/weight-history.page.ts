@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeightService } from '../../services/weight.service'
+import { WeightService } from '../../services/weight.service';
 
 @Component({
   selector: 'app-weight-history',
@@ -8,20 +8,20 @@ import { WeightService } from '../../services/weight.service'
 })
 export class WeightHistoryPage implements OnInit {
 
-  constructor(private weightService: WeightService) { }
+
+  constructor(private weightService: WeightService) {
+    this.getWeihtHistory();
+  }
 
   ngOnInit() {
-    this.getWeihtHistory()
+    this.getWeihtHistory();
   }
 
   getWeihtHistory(){
-    this.weightService.weightHistory().subscribe((res:any)=>{
-      console.log(res.data)
+    this.weightService.weightHistory().subscribe((res: any)=>{
+      console.log(res.data);
 
-      this.weightService.changeWeightHistory(res.data)
-    })
+      this.weightService.changeWeightHistory(res.data);
+    });
   }
-
-
-  
 }

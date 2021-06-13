@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeightService } from '../../services/weight.service'
-import {ToastService} from '../../services/toast.service'
+import { WeightService } from '../../services/weight.service';
+import {ToastService} from '../../services/toast.service';
 
 @Component({
   selector: 'app-weight-log',
@@ -13,19 +13,21 @@ export class WeightLogPage implements OnInit {
     peso: null,
     fecha: null,
     hora: null
-  }
+  };
 
-  constructor(private weightService:WeightService, private toastService:ToastService) { }
+  constructor(private weightService: WeightService, private toastService: ToastService) { }
 
   ngOnInit() {
   }
 
   weight(){
-    this.weightService.weightUP(this.postWeigthData).subscribe(res=>{
+    this.weightService.weightUP(this.postWeigthData).subscribe((res: any)=>{
+      const messageSuccess = res.message;
+      this.toastService.presentToast(messageSuccess);
     },
-    (HttpErrorResponse: any)=>{
-      let messageError = HttpErrorResponse.error.message
-      this.toastService.presentToast(messageError)
-    })
+    (err: any)=>{
+      const messageError = err.error.message;
+      this.toastService.presentToast(messageError);
+    });
   }
 }

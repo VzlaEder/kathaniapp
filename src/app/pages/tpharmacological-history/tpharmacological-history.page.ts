@@ -21,6 +21,7 @@ export class TPharmacologicalHistoryPage implements OnInit {
 
   getTreatmentHistory() {
     this.treatmentService.treatmentHistory().subscribe((res: any) => {
+      console.log(res)
       this.cardDataTreatment = res.data;
       console.log(this.cardDataTreatment)
     },

@@ -23,8 +23,10 @@ var WeightLogPage = /** @class */ (function () {
     WeightLogPage.prototype.weight = function () {
         var _this = this;
         this.weightService.weightUP(this.postWeigthData).subscribe(function (res) {
-        }, function (HttpErrorResponse) {
-            var messageError = HttpErrorResponse.error.message;
+            var messageSuccess = res.message;
+            _this.toastService.presentToast(messageSuccess);
+        }, function (err) {
+            var messageError = err.error.message;
             _this.toastService.presentToast(messageError);
         });
     };
