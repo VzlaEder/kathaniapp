@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { WelcomePage } from './welcome.page';
-import { Noauthenticated } from '../../guards/noauthenticated.guard';
+import { Noauthenticated } from '../../guards/Noauthenticated.guard';
 
 
 const routes: Routes = [
