@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from './http.service'
-import { BehaviorSubject, Observable } from 'rxjs'
+import { HttpService } from './http.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { glucoseI } from '../models/glusose.interface';
 
 
@@ -13,18 +13,18 @@ export class GlucoseService {
 
   glucoseH = new BehaviorSubject<any>([]);
 
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService: HttpService) { }
 
-  changeGlucoseHistory(data:any){
+  changeGlucoseHistory(data: any){
     this.glucoseH.next(data);
   }
 
   glucoseHistory(): Observable<any> {
-    return this.httpService.get("movil-diabetic/register-glucose");
+    return this.httpService.get('movil-diabetic/register-glucose');
   }
 
   glucoseUP(postData: any){
-    return this.httpService.posttoken("movil-diabetic/register-glucose",postData);
+    return this.httpService.posttoken('movil-diabetic/register-glucose',postData);
   }
 
 }

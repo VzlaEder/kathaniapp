@@ -15,7 +15,7 @@ export class HttpService {
 
     const url = environment.apiURL + serviceName;
 
-      return this.http.post(url, data, options)
+      return this.http.post(url, data, options);
   }
 
   get(serviceName: string) {
@@ -40,7 +40,7 @@ export class HttpService {
 
     const url = environment.apiURL + serviceName;
 
-    return this.http.post(url, data, options)
+    return this.http.post(url, data, options);
   }
 
 

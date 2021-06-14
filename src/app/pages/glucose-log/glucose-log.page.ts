@@ -21,7 +21,7 @@ export class GlucoseLogPage implements OnInit {
     comida:''
   };
 
-  constructor(private router: Router, private glucoseService: GlucoseService, private toastService: ToastService ) { }
+  constructor(private router: Router, private glucoseService: GlucoseService, private toastService: ToastService ) {}
 
   ngOnInit() {}
 

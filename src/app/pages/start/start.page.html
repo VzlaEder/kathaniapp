@@ -9,51 +9,24 @@
 <ion-content>
   <div>
     <ion-card>
-      <ion-card-header color="success">
-        <ion-card-title>Último nivel de glucosa:</ion-card-title>
+      <ion-card-header [color]="colorG(data.glucosaActual)">
+        <ion-card-title>Glucosa actual</ion-card-title>
       </ion-card-header>
       <ion-grid fixed>
         <ion-row>
-          <ion-col class="center" size="6">
-            <ion-badge>
-              <h1>87 <br>mg/dL</h1>
+          <ion-col class="center" size="4">
+            <ion-badge [color]="colorG(data.glucosaActual)">
+              <h1>{{data.glucosaActual}}<br>mg/dL</h1>
             </ion-badge>
           </ion-col>
-          <ion-col size="6">
+          <ion-col size="8">
           <ion-item>
             <ion-label color="medium" position="stacked">Nivel riesgo:</ion-label>
-            Si riesgos.
+            {{riesgoG(data.glucosaActual)}}
           </ion-item>
           <ion-item>
             <ion-label color="medium" position="stacked">Consejo:</ion-label>
-            Continúa así.
-          </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-  </div>
-  <div>
-    <ion-card>
-      <ion-card-header color="success">
-        <ion-icon slot="start" name="scale"></ion-icon>
-        <ion-card-title>Últomo peso registrado</ion-card-title>
-      </ion-card-header>
-      <ion-grid fixed>
-        <ion-row>
-          <ion-col class="center" size="6">
-            <ion-badge>
-              <h1>80 kg</h1>
-            </ion-badge>
-          </ion-col>
-          <ion-col size="6">
-          <ion-item>
-            <ion-label color="medium" position="stacked">IMC:</ion-label>
-            Si riesgos.
-          </ion-item>
-          <ion-item>
-            <ion-label color="medium" position="stacked">Consejo:</ion-label>
-            Continúa así.
+            {{consejo(data.glucosaActual)}}
           </ion-item>
           </ion-col>
         </ion-row>
@@ -63,17 +36,26 @@
   <div>
     <ion-card>
       <ion-card-header color="secondary">
-        <ion-card-title>Peso</ion-card-title>
+        <ion-card-title>Peso actual</ion-card-title>
       </ion-card-header>
       <ion-card-title></ion-card-title>
       <ion-list>
         <ion-item>
-          <ion-label>Actual</ion-label>
-          <ion-badge slot="end">90 kg</ion-badge>
+          <h1>
+          {{data.pesoActual}} kg
+        </h1>
         </ion-item>
         <ion-item>
-          <ion-label>Ideal</ion-label>
-          <ion-badge color="success" slot="end">75 kg</ion-badge>
+          <ion-label color="medium">IMC actual: </ion-label>
+          <ion-badge [color]="colorW(data.pesoActual/(data.altura*data.altura))" slot="end">{{data.pesoActual/(data.altura*data.altura)}}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label color="medium">Grado de riesgo: </ion-label>
+          <ion-badge [color]="colorW(data.pesoActual/(data.altura*data.altura))" slot="end">{{riesgoW(data.pesoActual/(data.altura*data.altura))}}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label color="medium">Condición coporal: </ion-label>
+          <ion-badge [color]="colorW(data.pesoActual/(data.altura*data.altura))" slot="end">{{bodyCondition(data.pesoActual/(data.altura*data.altura))}}</ion-badge>
         </ion-item>
       </ion-list>
     </ion-card>
