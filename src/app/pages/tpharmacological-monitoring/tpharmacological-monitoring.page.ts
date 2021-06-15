@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreatmentService } from '../../services/treatment.service';
 import { ToastService } from '../../services/toast.service';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ export class TPharmacologicalMonitoringPage implements OnInit {
 
   cardDataTreatment: any;
 
-  constructor(private treatmentService: TreatmentService, private toastService: ToastService) { }
+  constructor(private router: Router, private treatmentService: TreatmentService, private toastService: ToastService) { }
 
   ngOnInit() {
     this.getTreatmentList();
@@ -41,6 +42,8 @@ export class TPharmacologicalMonitoringPage implements OnInit {
     this.treatmentService.treatmentRegID(data).subscribe((res: any) => {
       const messageSuccess = res.message;
       this.toastService.presentToast(messageSuccess);
+      const index = this.cardDataTreatment.indexOf(treatmentfollowup);
+      this.cardDataTreatment.splice(index, 1);
       console.log(res);
     },
       (err: any) => {

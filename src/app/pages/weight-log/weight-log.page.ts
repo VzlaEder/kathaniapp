@@ -14,7 +14,11 @@ export class WeightLogPage implements OnInit {
     fecha: null,
     hora: null
   };
-
+  public  defaultPostWeigthData = {
+    peso: null,
+    fecha: null,
+    hora: null
+  };
   constructor(private weightService: WeightService, private toastService: ToastService) { }
 
   ngOnInit() {
@@ -24,6 +28,7 @@ export class WeightLogPage implements OnInit {
     this.weightService.weightUP(this.postWeigthData).subscribe((res: any)=>{
       const messageSuccess = res.message;
       this.toastService.presentToast(messageSuccess);
+      this.postWeigthData = Object.assign({}, this.defaultPostWeigthData);
     },
     (err: any)=>{
       const messageError = err.error.message;

@@ -17,6 +17,11 @@ var WeightLogPage = /** @class */ (function () {
             fecha: null,
             hora: null
         };
+        this.defaultPostWeigthData = {
+            peso: null,
+            fecha: null,
+            hora: null
+        };
     }
     WeightLogPage.prototype.ngOnInit = function () {
     };
@@ -25,6 +30,7 @@ var WeightLogPage = /** @class */ (function () {
         this.weightService.weightUP(this.postWeigthData).subscribe(function (res) {
             var messageSuccess = res.message;
             _this.toastService.presentToast(messageSuccess);
+            _this.postWeigthData = Object.assign({}, _this.defaultPostWeigthData);
         }, function (err) {
             var messageError = err.error.message;
             _this.toastService.presentToast(messageError);

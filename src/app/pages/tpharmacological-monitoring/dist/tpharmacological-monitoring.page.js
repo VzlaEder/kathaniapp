@@ -9,7 +9,8 @@ exports.__esModule = true;
 exports.TPharmacologicalMonitoringPage = void 0;
 var core_1 = require("@angular/core");
 var TPharmacologicalMonitoringPage = /** @class */ (function () {
-    function TPharmacologicalMonitoringPage(treatmentService, toastService) {
+    function TPharmacologicalMonitoringPage(router, treatmentService, toastService) {
+        this.router = router;
         this.treatmentService = treatmentService;
         this.toastService = toastService;
     }
@@ -36,6 +37,8 @@ var TPharmacologicalMonitoringPage = /** @class */ (function () {
         this.treatmentService.treatmentRegID(data).subscribe(function (res) {
             var messageSuccess = res.message;
             _this.toastService.presentToast(messageSuccess);
+            var index = _this.cardDataTreatment.indexOf(treatmentfollowup);
+            _this.cardDataTreatment.splice(index, 1);
             console.log(res);
         }, function (err) {
             console.log(err);

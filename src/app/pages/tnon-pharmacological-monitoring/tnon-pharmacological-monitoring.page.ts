@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastService } from '../../services/toast.service';
 import { NotreatmentService } from '../../services/notreatment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tnon-pharmacological-monitoring',
@@ -11,7 +12,7 @@ export class TNonPharmacologicalMonitoringPage implements OnInit {
 
   datosMember = JSON.parse(localStorage.getItem('member'));
   cardDataTreatment: any;
-  constructor(private toastService: ToastService, private notreatmentService: NotreatmentService) { }
+  constructor(private router: Router, private toastService: ToastService, private notreatmentService: NotreatmentService) { }
 
   ngOnInit() {
     this.getTreatmentList();
@@ -38,6 +39,8 @@ export class TNonPharmacologicalMonitoringPage implements OnInit {
       console.log(res);
       const messageSuccess = res.message;
       this.toastService.presentToast(messageSuccess);
+      const index = this.cardDataTreatment.indexOf(treatmentfollowup);
+      this.cardDataTreatment.splice(index, 1);
     },
       (err: any) => {
         console.log(err);
