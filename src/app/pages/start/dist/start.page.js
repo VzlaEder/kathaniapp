@@ -18,9 +18,12 @@ var StartPage = /** @class */ (function () {
         };
     }
     StartPage.prototype.ngOnInit = function () {
-        this.getGlucoseHistory();
+        this.winmigHistory();
     };
-    StartPage.prototype.getGlucoseHistory = function () {
+    StartPage.prototype.ionViewDidEnter = function () {
+        this.winmigHistory();
+    };
+    StartPage.prototype.winmigHistory = function () {
         var _this = this;
         this.startService.dashBoardData().subscribe(function (res) {
             _this.data = res.data;
@@ -78,12 +81,12 @@ var StartPage = /** @class */ (function () {
     };
     StartPage.prototype.consejo = function (val) {
         if (val < 70 || val > 125) {
-            return 'Consulta tu médico';
+            return 'Consulta tu médico.';
         }
         else if (val >= 101 && val <= 125) {
-            return 'Mejora tus hábitos';
+            return 'Mejora tus hábitos.';
         }
-        return 'success';
+        return 'Sigue así.';
     };
     StartPage = __decorate([
         core_1.Component({

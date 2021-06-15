@@ -16,6 +16,9 @@ var TPharmacologicalMonitoringPage = /** @class */ (function () {
     TPharmacologicalMonitoringPage.prototype.ngOnInit = function () {
         this.getTreatmentList();
     };
+    TPharmacologicalMonitoringPage.prototype.ionViewDidEnter = function () {
+        this.getTreatmentList();
+    };
     TPharmacologicalMonitoringPage.prototype.getTreatmentList = function () {
         var _this = this;
         this.treatmentService.treatmentList().subscribe(function (res) {

@@ -17,6 +17,10 @@ export class TNonPharmacologicalMonitoringPage implements OnInit {
     this.getTreatmentList();
   }
 
+  ionViewDidEnter(){
+    this.getTreatmentList();
+  }
+
   getTreatmentList(){
     this.notreatmentService.treatmentNoList().subscribe((res: any) => {
       this.cardDataTreatment = res.data;

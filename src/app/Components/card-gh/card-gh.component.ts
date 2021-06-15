@@ -16,7 +16,6 @@ export class CardGhComponent implements OnInit {
     this.glucoseService.glucoseH.subscribe(res=>{
       this.cardDataG = res;
     });
-    console.log(this.cardDataG);
   }
 
   color(val: number) {
@@ -34,7 +33,7 @@ export class CardGhComponent implements OnInit {
     if(val<70 || val>125){
       return 'Riesgo alto';
     }else if( val >= 101 && val <= 125){
-      return 'Riesgo medio';
+      return 'Riesgo leve';
     }
     return 'Sin riesgos';
     }

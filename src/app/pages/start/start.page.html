@@ -40,14 +40,14 @@
       </ion-card-header>
       <ion-card-title></ion-card-title>
       <ion-list>
-        <ion-item>
-          <h1>
-          {{data.pesoActual}} kg
-        </h1>
-        </ion-item>
+        <div class="center">
+            <h1>
+                {{data.pesoActual}} kg
+            </h1>
+        </div>
         <ion-item>
           <ion-label color="medium">IMC actual: </ion-label>
-          <ion-badge [color]="colorW(data.pesoActual/(data.altura*data.altura))" slot="end">{{data.pesoActual/(data.altura*data.altura)}}</ion-badge>
+          <ion-badge [color]="colorW(data.pesoActual/(data.altura*data.altura))" slot="end">{{data.pesoActual/(data.altura*data.altura) | number}}</ion-badge>
         </ion-item>
         <ion-item>
           <ion-label color="medium">Grado de riesgo: </ion-label>

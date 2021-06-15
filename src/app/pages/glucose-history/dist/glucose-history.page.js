@@ -11,9 +11,11 @@ var core_1 = require("@angular/core");
 var GlucoseHistoryPage = /** @class */ (function () {
     function GlucoseHistoryPage(glucoseService) {
         this.glucoseService = glucoseService;
-        this.getGlucoseHistory();
     }
     GlucoseHistoryPage.prototype.ngOnInit = function () { };
+    GlucoseHistoryPage.prototype.ionViewDidEnter = function () {
+        this.getGlucoseHistory();
+    };
     GlucoseHistoryPage.prototype.getGlucoseHistory = function () {
         var _this = this;
         this.glucoseService.glucoseHistory().subscribe(function (res) {

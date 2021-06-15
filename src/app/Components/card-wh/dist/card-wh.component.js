@@ -18,7 +18,6 @@ var CardWhComponent = /** @class */ (function () {
         this.weightService.weightH.subscribe(function (res) {
             _this.cardDataW = res;
         });
-        console.log(this.cardDataW);
     };
     CardWhComponent.prototype.color = function (val) {
         if (val < 18.5 || val > 30.0) {

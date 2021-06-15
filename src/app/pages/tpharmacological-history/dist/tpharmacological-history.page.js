@@ -16,15 +16,17 @@ var TPharmacologicalHistoryPage = /** @class */ (function () {
     TPharmacologicalHistoryPage.prototype.ngOnInit = function () {
         this.getTreatmentHistory();
     };
+    TPharmacologicalHistoryPage.prototype.ionViewDidEnter = function () {
+        this.getTreatmentHistory();
+    };
     TPharmacologicalHistoryPage.prototype.getTreatmentHistory = function () {
         var _this = this;
         this.treatmentService.treatmentHistory().subscribe(function (res) {
-            console.log(res);
             _this.cardDataTreatment = res.data;
             console.log(_this.cardDataTreatment);
-        }, function (HttpErrorResponse) {
-            console.log(HttpErrorResponse);
-            var messageError = HttpErrorResponse.error.message;
+        }, function (err) {
+            console.log(err);
+            var messageError = err.error.message;
             _this.toastService.presentToast(messageError);
         });
     };

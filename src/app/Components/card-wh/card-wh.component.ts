@@ -18,7 +18,6 @@ export class CardWhComponent implements OnInit {
     this.weightService.weightH.subscribe(res=>{
       this.cardDataW = res;
     });
-    console.log(this.cardDataW);
   }
 
   color(val: number) {

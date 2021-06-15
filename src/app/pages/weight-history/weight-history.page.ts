@@ -9,11 +9,13 @@ import { WeightService } from '../../services/weight.service';
 export class WeightHistoryPage implements OnInit {
 
 
-  constructor(private weightService: WeightService) {
+  constructor(private weightService: WeightService) {}
+
+  ngOnInit() {
     this.getWeihtHistory();
   }
 
-  ngOnInit() {
+  ionViewDidEnter(){
     this.getWeihtHistory();
   }
 

@@ -17,10 +17,14 @@ export class StartPage implements OnInit {
   constructor(private startService: StartService) { }
 
   ngOnInit() {
-    this.getGlucoseHistory();
+    this.winmigHistory();
   }
 
-  getGlucoseHistory() {
+  ionViewDidEnter(){
+    this.winmigHistory();
+  }
+
+  winmigHistory() {
     this.startService.dashBoardData().subscribe((res: any) => {
       this.data = res.data;
     });
@@ -80,11 +84,11 @@ export class StartPage implements OnInit {
   consejo(val: number) {
 
     if (val < 70 || val > 125) {
-      return 'Consulta tu médico';
+      return 'Consulta tu médico.';
     } else if (val >= 101 && val <= 125) {
-      return 'Mejora tus hábitos';
+      return 'Mejora tus hábitos.';
     }
-    return 'success';
+    return 'Sigue así.';
   }
 
 }

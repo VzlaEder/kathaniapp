@@ -19,6 +19,11 @@ export class TPharmacologicalMonitoringPage implements OnInit {
     this.getTreatmentList();
   }
 
+
+  ionViewDidEnter(){
+    this.getTreatmentList();
+  }
+
   getTreatmentList() {
     this.treatmentService.treatmentList().subscribe((res: any) => {
       this.cardDataTreatment = res.data;

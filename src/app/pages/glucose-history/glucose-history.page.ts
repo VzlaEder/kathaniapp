@@ -9,11 +9,14 @@ import { GlucoseService } from '../../services/glucose.service';
 export class GlucoseHistoryPage implements OnInit {
 
 
-  constructor(private glucoseService: GlucoseService) {
+  constructor(private glucoseService: GlucoseService) {}
+
+  ngOnInit() {}
+
+  ionViewDidEnter(){
     this.getGlucoseHistory();
   }
 
-  ngOnInit() {}
 
   getGlucoseHistory(){
     this.glucoseService.glucoseHistory().subscribe((res: any) =>{

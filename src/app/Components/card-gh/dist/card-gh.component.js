@@ -17,7 +17,6 @@ var CardGhComponent = /** @class */ (function () {
         this.glucoseService.glucoseH.subscribe(function (res) {
             _this.cardDataG = res;
         });
-        console.log(this.cardDataG);
     };
     CardGhComponent.prototype.color = function (val) {
         if (val < 70 || val > 125) {
@@ -33,7 +32,7 @@ var CardGhComponent = /** @class */ (function () {
             return 'Riesgo alto';
         }
         else if (val >= 101 && val <= 125) {
-            return 'Riesgo medio';
+            return 'Riesgo leve';
         }
         return 'Sin riesgos';
     };
