@@ -30,7 +30,7 @@ var CardWhComponent = /** @class */ (function () {
     };
     CardWhComponent.prototype.bodyCondition = function (val) {
         if (val < 18.5) {
-            return 'Peso bajo';
+            return 'Desnutrición';
         }
         else if (val >= 18.5 && val <= 24.9) {
             return 'Peso Normal';
