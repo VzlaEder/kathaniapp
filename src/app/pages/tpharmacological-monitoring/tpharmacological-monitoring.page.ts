@@ -14,6 +14,8 @@ export class TPharmacologicalMonitoringPage implements OnInit {
 
   cardDataTreatment: any;
 
+  loading: boolean;
+
   constructor(private router: Router, private treatmentService: TreatmentService, private toastService: ToastService) { }
 
   ngOnInit() {
@@ -34,19 +36,20 @@ export class TPharmacologicalMonitoringPage implements OnInit {
 
 
   postTreatmentId(treatmentfollowup: any){
-    console.log(treatmentfollowup);
     const data = {
       patient_treatment_id: treatmentfollowup.id
     };
-    console.log(data);
+    this.loading =  true;
     this.treatmentService.treatmentRegID(data).subscribe((res: any) => {
       const messageSuccess = res.message;
       this.toastService.presentToast(messageSuccess);
       const index = this.cardDataTreatment.indexOf(treatmentfollowup);
       this.cardDataTreatment.splice(index, 1);
+      this.loading = false;
       console.log(res);
     },
       (err: any) => {
+        this.loading = false;
         console.log(err);
         const messageError = err.error.message;
         this.toastService.presentToast(messageError);

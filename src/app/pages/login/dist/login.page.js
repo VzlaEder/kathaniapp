@@ -28,15 +28,18 @@ var LoginPage = /** @class */ (function () {
     LoginPage.prototype.loginAction = function () {
         var _this = this;
         if (this.validateInputs()) {
+            this.loading = true;
             this.authService.login(this.postData).subscribe(function (res) {
                 console.log(res);
                 var datasuccess = res;
-                localStorage.setItem("token", datasuccess.access_token);
-                localStorage.setItem("member", JSON.stringify(datasuccess.member));
+                localStorage.setItem('token', datasuccess.access_token);
+                localStorage.setItem('member', JSON.stringify(datasuccess.member));
                 _this.router.navigate(['home']);
-            }, function (HttpErrorResponse) {
-                console.log(HttpErrorResponse);
-                var messageError = HttpErrorResponse.error.message;
+                _this.loading = false;
+            }, function (err) {
+                _this.loading = false;
+                console.log(err);
+                var messageError = err.error.message;
                 _this.toastService.presentToast(messageError);
             });
         }

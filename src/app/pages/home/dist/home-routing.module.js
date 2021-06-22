@@ -55,6 +55,14 @@ var routes = [
                 loadChildren: function () { return Promise.resolve().then(function () { return require('../weight-log/weight-log.module'); }).then(function (m) { return m.WeightLogPageModule; }); }
             },
             {
+                path: 'weight-statistics',
+                loadChildren: function () { return Promise.resolve().then(function () { return require('../weight-statistics/weight-statistics.module'); }).then(function (m) { return m.WeightStatisticsPageModule; }); }
+            },
+            {
+                path: 'glucose-statistics',
+                loadChildren: function () { return Promise.resolve().then(function () { return require('../glucose-statistics/glucose-statistics.module'); }).then(function (m) { return m.GlucoseStatisticsPageModule; }); }
+            },
+            {
                 path: 'tnon-pharmacological-history',
                 loadChildren: function () { return Promise.resolve().then(function () { return require('../tnon-pharmacological-history/tnon-pharmacological-history.module'); }).then(function (m) { return m.TNonPharmacologicalHistoryPageModule; }); }
             },

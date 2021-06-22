@@ -29,18 +29,19 @@ var TPharmacologicalMonitoringPage = /** @class */ (function () {
     };
     TPharmacologicalMonitoringPage.prototype.postTreatmentId = function (treatmentfollowup) {
         var _this = this;
-        console.log(treatmentfollowup);
         var data = {
             patient_treatment_id: treatmentfollowup.id
         };
-        console.log(data);
+        this.loading = true;
         this.treatmentService.treatmentRegID(data).subscribe(function (res) {
             var messageSuccess = res.message;
             _this.toastService.presentToast(messageSuccess);
             var index = _this.cardDataTreatment.indexOf(treatmentfollowup);
             _this.cardDataTreatment.splice(index, 1);
+            _this.loading = false;
             console.log(res);
         }, function (err) {
+            _this.loading = false;
             console.log(err);
             var messageError = err.error.message;
             _this.toastService.presentToast(messageError);

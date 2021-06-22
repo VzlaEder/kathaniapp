@@ -37,7 +37,11 @@
           </ion-select>
         </ion-item>
         <div class="center ion-padding-top">
-          <ion-button (click)="glucoseDataUP()" shape="round">Registrar</ion-button>
+          <ion-button (click)="glucoseDataUP()" shape="round">
+            <ion-label> Registrar</ion-label>
+            <br>
+          <ion-spinner *ngIf="success" name="dots"></ion-spinner>
+          </ion-button>
         </div>
   </ion-card>
 </ion-content>

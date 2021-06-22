@@ -48,6 +48,14 @@ const routes: Routes = [
         loadChildren: () => import('../weight-log/weight-log.module').then(m => m.WeightLogPageModule)
       },
       {
+        path: 'weight-statistics',
+        loadChildren: () => import('../weight-statistics/weight-statistics.module').then( m => m.WeightStatisticsPageModule)
+      },
+      {
+        path: 'glucose-statistics',
+        loadChildren: () => import('../glucose-statistics/glucose-statistics.module').then( m => m.GlucoseStatisticsPageModule)
+      },
+      {
         path: 'tnon-pharmacological-history',
         loadChildren: () => import('../tnon-pharmacological-history/tnon-pharmacological-history.module').then(m => m.TNonPharmacologicalHistoryPageModule)
       },

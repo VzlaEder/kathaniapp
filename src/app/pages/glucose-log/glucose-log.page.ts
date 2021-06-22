@@ -14,7 +14,15 @@ import {glucoseI} from '../../models/glusose.interface';
 })
 export class GlucoseLogPage implements OnInit {
 
+  success: boolean;
+
   public postGlucoseData = {
+    nivel_glusemia: null,
+    fecha: null,
+    hora: null,
+    comida:''
+  };
+  public  defaultpostGlucoseData = {
     nivel_glusemia: null,
     fecha: null,
     hora: null,
@@ -26,12 +34,16 @@ export class GlucoseLogPage implements OnInit {
   ngOnInit() {}
 
   glucoseDataUP(){
+      this.success = true;
       this.glucoseService.glucoseUP(this.postGlucoseData).subscribe((res: any) =>{
         console.log(res);
         const messageSuccess = res.message;
         this.toastService.presentToast(messageSuccess);
+        this.postGlucoseData = Object.assign({}, this.defaultpostGlucoseData);
+        this.success = false;
       },
       (err: any)=>{
+        this.success = false;
         console.log(err);
         const messageError = err.error.message;
         this.toastService.presentToast(messageError);

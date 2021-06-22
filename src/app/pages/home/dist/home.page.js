@@ -11,6 +11,11 @@ var core_1 = require("@angular/core");
 var HomePage = /** @class */ (function () {
     function HomePage(authService) {
         this.authService = authService;
+        this.member = {
+            nombre: '',
+            apellido: '',
+            correo: ''
+        };
         this.appPages = [
             { title: 'Perfil', url: '/home/profile', icon: 'person' },
             { title: 'Notificaciones', url: '/home/notifications', icon: 'notifications' },
@@ -20,10 +25,11 @@ var HomePage = /** @class */ (function () {
             { title: 'Tus estadísticas', url: '/home/statistics', icon: 'stats-chart' },
             { title: 'Califica nuestro servicio', url: '/home/qualify', icon: 'warning' }
         ];
-        this.datosMember = JSON.parse(localStorage.getItem('member'));
     }
-    HomePage.prototype.ngOnInit = function () {
-        console.log(this.datosMember);
+    HomePage.prototype.ngOnInit = function () { };
+    HomePage.prototype.ionViewDidEnter = function () {
+        var datosMember = JSON.parse(localStorage.getItem('member'));
+        this.member = datosMember;
     };
     HomePage.prototype.logout = function () {
         this.authService.logout();

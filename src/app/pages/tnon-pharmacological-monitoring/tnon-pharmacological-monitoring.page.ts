@@ -11,8 +11,12 @@ import { Router } from '@angular/router';
 export class TNonPharmacologicalMonitoringPage implements OnInit {
 
   datosMember = JSON.parse(localStorage.getItem('member'));
+
   cardDataTreatment: any;
-  constructor(private router: Router, private toastService: ToastService, private notreatmentService: NotreatmentService) { }
+
+  loading: boolean;
+
+  constructor(private toastService: ToastService, private notreatmentService: NotreatmentService) { }
 
   ngOnInit() {
     this.getTreatmentList();
@@ -30,20 +34,19 @@ export class TNonPharmacologicalMonitoringPage implements OnInit {
     );
   }
   postTreatmentId(treatmentfollowup: any){
-    console.log(treatmentfollowup);
     const data = {
       activity_treatment_id: treatmentfollowup.id
     };
-    console.log(data);
+    this.loading = true;
     this.notreatmentService.treatmentNoRegID(data).subscribe((res: any) => {
-      console.log(res);
       const messageSuccess = res.message;
       this.toastService.presentToast(messageSuccess);
       const index = this.cardDataTreatment.indexOf(treatmentfollowup);
       this.cardDataTreatment.splice(index, 1);
+      this.loading = false;
     },
       (err: any) => {
-        console.log(err);
+        this.loading = false;
         const messageError = err.error.message;
         this.toastService.presentToast(messageError);
       });

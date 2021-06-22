@@ -42,7 +42,11 @@
         </ion-item>
       </ion-card-content>
       <div class="center">
-        <ion-button (click)="postTreatmentId(treatmentfollowup)" shape="round">Registrar</ion-button>
+        <ion-button (click)="postTreatmentId(treatmentfollowup)" shape="round">
+          <ion-label>Registrar</ion-label>
+          <br>
+          <ion-spinner *ngIf="loading" name="dots"></ion-spinner>
+          </ion-button>
       </div>
     </ion-card>
   </div>

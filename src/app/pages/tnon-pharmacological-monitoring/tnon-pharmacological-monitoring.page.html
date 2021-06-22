@@ -20,7 +20,11 @@
         {{treatment.hora}}
       </ion-item>
       <div class="center ion-padding-top">
-        <ion-button (click)="postTreatmentId(treatment)" shape="round">Registrar</ion-button>
+        <ion-button (click)="postTreatmentId(treatment)" shape="round">
+          <ion-label>Registrar</ion-label>
+          <br>
+          <ion-spinner *ngIf="loading" name="dots"></ion-spinner>
+        </ion-button>
       </div>
     </ion-card>
   </div>

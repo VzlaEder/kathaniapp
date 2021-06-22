@@ -9,8 +9,7 @@ exports.__esModule = true;
 exports.TNonPharmacologicalMonitoringPage = void 0;
 var core_1 = require("@angular/core");
 var TNonPharmacologicalMonitoringPage = /** @class */ (function () {
-    function TNonPharmacologicalMonitoringPage(router, toastService, notreatmentService) {
-        this.router = router;
+    function TNonPharmacologicalMonitoringPage(toastService, notreatmentService) {
         this.toastService = toastService;
         this.notreatmentService = notreatmentService;
         this.datosMember = JSON.parse(localStorage.getItem('member'));
@@ -30,19 +29,18 @@ var TNonPharmacologicalMonitoringPage = /** @class */ (function () {
     };
     TNonPharmacologicalMonitoringPage.prototype.postTreatmentId = function (treatmentfollowup) {
         var _this = this;
-        console.log(treatmentfollowup);
         var data = {
             activity_treatment_id: treatmentfollowup.id
         };
-        console.log(data);
+        this.loading = true;
         this.notreatmentService.treatmentNoRegID(data).subscribe(function (res) {
-            console.log(res);
             var messageSuccess = res.message;
             _this.toastService.presentToast(messageSuccess);
             var index = _this.cardDataTreatment.indexOf(treatmentfollowup);
             _this.cardDataTreatment.splice(index, 1);
+            _this.loading = false;
         }, function (err) {
-            console.log(err);
+            _this.loading = false;
             var messageError = err.error.message;
             _this.toastService.presentToast(messageError);
         });

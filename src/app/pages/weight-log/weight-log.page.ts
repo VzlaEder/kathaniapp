@@ -19,18 +19,24 @@ export class WeightLogPage implements OnInit {
     fecha: null,
     hora: null
   };
+
+  success: boolean;
+
   constructor(private weightService: WeightService, private toastService: ToastService) { }
 
   ngOnInit() {
   }
 
   weight(){
+    this.success = true;
     this.weightService.weightUP(this.postWeigthData).subscribe((res: any)=>{
       const messageSuccess = res.message;
       this.toastService.presentToast(messageSuccess);
       this.postWeigthData = Object.assign({}, this.defaultPostWeigthData);
+      this.success =  false;
     },
     (err: any)=>{
+      this.success  = false;
       const messageError = err.error.message;
       this.toastService.presentToast(messageError);
     });

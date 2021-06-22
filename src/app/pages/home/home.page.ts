@@ -9,7 +9,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomePage implements OnInit {
 
-
+member = {
+  nombre: '',
+  apellido: '',
+  correo: ''
+};
 
   appPages = [
     { title: 'Perfil', url: '/home/profile', icon: 'person' },
@@ -20,16 +24,20 @@ export class HomePage implements OnInit {
     { title: 'Tus estadísticas', url: '/home/statistics', icon: 'stats-chart' },
     { title: 'Califica nuestro servicio', url: '/home/qualify', icon: 'warning' }
   ];
-  constructor(private authService: AuthService){}
 
-  ngOnInit() {
-    console.log(this.datosMember);
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {}
+
+  ionViewDidEnter() {
+   const datosMember = JSON.parse(localStorage.getItem('member'));
+    this.member = datosMember;
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 
-  datosMember = JSON.parse(localStorage.getItem('member'));
 
 }

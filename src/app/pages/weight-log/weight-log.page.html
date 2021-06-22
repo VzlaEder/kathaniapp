@@ -27,7 +27,11 @@
       <ion-datetime display-format="HH:mm " picker-format="HH:mm" placeholder="Selecciona la Hora" [(ngModel)]="postWeigthData.hora"></ion-datetime>
     </ion-item>
     <div class="center ion-padding-top">
-      <ion-button (click)="weight()" shape="round">Registrar</ion-button>
+      <ion-button (click)="weight()" shape="round">
+        <ion-label>Registrar</ion-label>
+        <br>
+        <ion-spinner *ngIf="success" name="dots"></ion-spinner>
+        </ion-button>
     </div>
   </ion-card>
 </ion-content>

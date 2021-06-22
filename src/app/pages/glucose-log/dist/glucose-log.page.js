@@ -19,15 +19,25 @@ var GlucoseLogPage = /** @class */ (function () {
             hora: null,
             comida: ''
         };
+        this.defaultpostGlucoseData = {
+            nivel_glusemia: null,
+            fecha: null,
+            hora: null,
+            comida: ''
+        };
     }
     GlucoseLogPage.prototype.ngOnInit = function () { };
     GlucoseLogPage.prototype.glucoseDataUP = function () {
         var _this = this;
+        this.success = true;
         this.glucoseService.glucoseUP(this.postGlucoseData).subscribe(function (res) {
             console.log(res);
             var messageSuccess = res.message;
             _this.toastService.presentToast(messageSuccess);
+            _this.postGlucoseData = Object.assign({}, _this.defaultpostGlucoseData);
+            _this.success = false;
         }, function (err) {
+            _this.success = false;
             console.log(err);
             var messageError = err.error.message;
             _this.toastService.presentToast(messageError);

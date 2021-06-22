@@ -4,8 +4,8 @@
       <ion-content>
         <ion-list id="inbox-list">
           <ion-header>
-            <ion-list-header>{{datosMember.nombre+" "+datosMember.apellido}}</ion-list-header>
-            <ion-note>{{datosMember?.correo}}</ion-note>
+            <ion-list-header>{{member.nombre+" "+member.apellido}}</ion-list-header>
+            <ion-note>{{member.correo}}</ion-note>
           </ion-header>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">

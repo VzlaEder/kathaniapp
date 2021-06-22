@@ -10,14 +10,13 @@ export class GlucoseControlPage implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  navigateToGlucosaHistory(){
+  navigateToGlucosaHistory() {
     this.router.navigate(['home/glucose-log']);
-}
-navigateToRegistroGlucosa(){
+  }
+  navigateToRegistroGlucosa() {
     this.router.navigate(['home/glucose-history']);
-}
+  }
 
 }

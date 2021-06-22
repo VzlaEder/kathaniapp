@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { ToastService } from '../../services/toast.service';
 import { AuthService } from '../../services/auth.service';
-import { LoginResSeccesI} from '../../models/loginres.interface';
+import { LoginResSeccesI } from '../../models/loginres.interface';
 
 @Component({
   selector: 'app-login',
@@ -12,17 +12,18 @@ import { LoginResSeccesI} from '../../models/loginres.interface';
 })
 export class LoginPage implements OnInit {
 
+  loading: boolean;
 
   public postData = {
     email: '',
     password: ''
   };
 
-  constructor(private router: Router, private authService: AuthService,private toastService:ToastService) { }
+  constructor(private router: Router, private authService: AuthService, private toastService: ToastService) { }
 
   validateInputs() {
-    let email = this.postData.email.trim();
-    let password = this.postData.password.trim();
+    const email = this.postData.email.trim();
+    const password = this.postData.password.trim();
 
     return (this.postData.email && this.postData.password && email.length > 0 && password.length > 0);
 
@@ -33,22 +34,27 @@ export class LoginPage implements OnInit {
 
   loginAction() {
     if (this.validateInputs()) {
+      this.loading = true;
       this.authService.login(this.postData).subscribe((res: any) => {
         console.log(res);
-        let datasuccess: LoginResSeccesI = res;
-          localStorage.setItem("token", datasuccess.access_token);
-          localStorage.setItem("member",JSON.stringify(datasuccess.member));
+          const datasuccess: LoginResSeccesI = res;
+          localStorage.setItem('token', datasuccess.access_token);
+          localStorage.setItem('member', JSON.stringify(datasuccess.member));
           this.router.navigate(['home']);
+          this.loading = false;
       },
-        (HttpErrorResponse: any) => {
-          console.log(HttpErrorResponse);
-          let messageError = HttpErrorResponse.error.message;
+        (err: any) => {
+          this.loading = false;
+          console.log(err);
+          const messageError = err.error.message;
           this.toastService.presentToast(messageError);
         }
-      )
+      );
     }
     else {
-      this.toastService.presentToast('Debes igresar email y contraseña')
+      this.toastService.presentToast('Debes igresar email y contraseña');
     }
+
   }
+
 }
