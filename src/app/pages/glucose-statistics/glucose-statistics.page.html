@@ -9,18 +9,9 @@
 <ion-content>
   <ion-list-header color="light">Gráfico de linea</ion-list-header>
   <ion-card class="welcome-card">
-    <ion-card-header>
-      <ion-card-subtitle>Evolución de tus niveles de glucosa durante el mes</ion-card-subtitle>
-      <ion-card-title>Enero</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <div class="chart-container">
-      <canvas id="glucose-statistics"></canvas>
-      </div>
-    </ion-card-content>
+    <ion-title class="ion-padding-top">Debes seleccionar un mes</ion-title>
     <ion-item>
-      <ion-label>Mes</ion-label>
-      <ion-select  interface="popover">
+      <ion-select placeholder="Selecciona el mes" interface="popover">
         <ion-select-option value="Enero">Enero</ion-select-option>
         <ion-select-option value="Febrero">Febrero</ion-select-option>
         <ion-select-option value="Marzo">Marzo</ion-select-option>
@@ -35,5 +26,14 @@
         <ion-select-option value="Diciembre">Diciembre</ion-select-option>
       </ion-select>
     </ion-item>
+    <ion-card-header>
+      <ion-card-subtitle>Evolución de tus niveles de glucosa durante el mes</ion-card-subtitle>
+      <ion-card-title>Enero</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="chart-container">
+      <canvas id="glucose-statistics"></canvas>
+      </div>
+    </ion-card-content>
   </ion-card>
 </ion-content>
