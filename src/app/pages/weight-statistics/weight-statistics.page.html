@@ -1,9 +1,38 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>weight-statistics</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-back-button slot="start" defaultHref="/home/statistics"></ion-back-button>
+    <ion-title>Estadísticas de tu peso</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list-header color="light">Gráfico de linea</ion-list-header>
+  <ion-card class="welcome-card">
+    <ion-title class="ion-padding-top">Debes seleccionar un mes</ion-title>
+    <ion-item>
+      <ion-select placeholder="Selecciona el mes" interface="popover">
+        <ion-select-option value="Enero">Enero</ion-select-option>
+        <ion-select-option value="Febrero">Febrero</ion-select-option>
+        <ion-select-option value="Marzo">Marzo</ion-select-option>
+        <ion-select-option value="Abril">Abril</ion-select-option>
+        <ion-select-option value="Mayo">Mayo</ion-select-option>
+        <ion-select-option value="Junio">Junio</ion-select-option>
+        <ion-select-option value="Julio">Julio</ion-select-option>
+        <ion-select-option value="Agosto">Agosto</ion-select-option>
+        <ion-select-option value="Septiembre">Septiembre</ion-select-option>
+        <ion-select-option value="Octubre">Octubre</ion-select-option>
+        <ion-select-option value="Noviembre">Noviembre</ion-select-option>
+        <ion-select-option value="Diciembre">Diciembre</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-card-header>
+      <ion-card-subtitle>Evolución de tu peso durante el mes</ion-card-subtitle>
+      <ion-card-title>Enero</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="chart-container">
+      <canvas id="weight-statistics"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

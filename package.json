@@ -26,6 +26,7 @@
     "@ionic/angular": "^5.5.2",
     "apexcharts": "^3.27.1",
     "body-parser": "^1.19.0",
+    "chart.js": "^3.3.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
