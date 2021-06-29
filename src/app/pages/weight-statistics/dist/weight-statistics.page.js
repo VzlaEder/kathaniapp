@@ -60,6 +60,15 @@ var WeightStatisticsPage = /** @class */ (function () {
             });
         });
     };
+    WeightStatisticsPage.prototype.idealw = function (val) {
+        if (val < 18.5 || val > 30.0) {
+            return 'Riesgo alto';
+        }
+        else if (val >= 25.0 && val <= 29.9) {
+            return 'Riesgo leve';
+        }
+        return 'Sin riesgos';
+    };
     WeightStatisticsPage = __decorate([
         core_1.Component({
             selector: 'app-weight-statistics',
