@@ -42,7 +42,6 @@ export class CardWhComponent implements OnInit {
     }
 
     idealw(val: number) {
-
       if(val<18.5 || val>30.0){
         return 'Riesgo alto';
       }else if( val >= 25.0 && val <= 29.9){

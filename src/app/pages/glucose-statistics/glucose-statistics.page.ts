@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Chart,
+import { GlucoseService } from '../../services/glucose.service';
+import {
+  Chart,
   ArcElement,
   LineElement,
   BarElement,
@@ -23,7 +24,10 @@ import { Chart,
   Filler,
   Legend,
   Title,
-  Tooltip } from 'chart.js';
+  Tooltip
+} from 'chart.js';
+
+
 
 @Component({
   selector: 'app-glucose-statistics',
@@ -32,11 +36,12 @@ import { Chart,
 })
 export class GlucoseStatisticsPage implements OnInit {
 
+  labels: any;
+  date: any;
+  myChart: any;
 
-  bars: any;
-  colorArray: any;
 
-  constructor() {
+  constructor(private glucoseService: GlucoseService) {
     Chart.register(ArcElement,
       LineElement,
       BarElement,
@@ -62,40 +67,51 @@ export class GlucoseStatisticsPage implements OnInit {
       Tooltip);
   }
 
-  ngOnInit() {
-    this.createBarChart();
+  ngOnInit() { }
+
+  ionViewDidEnter() {
+    this.glucosestatistics();
   }
 
-  createBarChart() {
-    const canvas = document.getElementById('glucose-statistics') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d');
-    const myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
-        datasets: [
-          {
-          label: 'Niveles de glucosa',
-          fill: false,
-          borderCapStyle:'butt',
-          borderJoinStyle: 'miter',
-          data: [50,60,50,20,100,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
-          backgroundColor: 'rgba(255, 0, 0)',
-          borderColor: 'rgba(255, 0, 0)',
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-          },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart'
+  glucosestatistics() {
+    this.glucoseService.glucoseStatistics().subscribe(res => {
+      this.labels = res.data.fecha;
+      this.date = res.data.glucosa.map(item => parseFloat(item));
+      const canvas = document.getElementById('glucose-statistics') as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d');
+      if (this.myChart) {
+        this.myChart.destroy();
+      }
+      this.myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: this.labels,
+          datasets: [
+            {
+              label: 'Nivel de glucosa',
+              fill: false,
+              borderCapStyle: 'butt',
+              borderJoinStyle: 'miter',
+              data: this.date,
+              backgroundColor: 'rgba(255, 0, 0)',
+              borderColor: 'rgba(255, 0, 0)',
+            }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+            title: {
+              display: true,
+              text: 'Comportamiento de tus niveles de glucosa.'
+            }
           }
-        }
-      },
+        },
+      });
     });
   }
+
 }

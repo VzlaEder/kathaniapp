@@ -27,4 +27,8 @@ export class GlucoseService {
     return this.httpService.posttoken('movil-diabetic/register-glucose',postData);
   }
 
+  glucoseStatistics(): Observable<any> {
+    return this.httpService.get('movil-diabetic/stadististic-glucose');
+  }
+
 }

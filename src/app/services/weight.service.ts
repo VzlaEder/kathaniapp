@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpService } from './http.service'
+import { HttpService } from './http.service';
 import { weightI } from '../models/weight.interface';
 
 
@@ -11,19 +11,22 @@ export class WeightService {
 
   weightH = new BehaviorSubject<any>([]);
 
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService: HttpService) { }
 
-  changeWeightHistory(data:any){
+  changeWeightHistory(data: any){
     this.weightH.next(data);
   }
 
   weightHistory(): Observable<any> {
-    return this.httpService.get("movil-diabetic/register-weight");
+    return this.httpService.get('movil-diabetic/registerweight');
   }
 
   weightUP(postData: weightI){
-    return this.httpService.posttoken("movil-diabetic/register-weight",postData);
+    return this.httpService.posttoken('movil-diabetic/register-weight',postData);
   }
 
+  weightStatistics(): Observable<any> {
+    return this.httpService.get('movil-diabetic/stadististic-weight');
+  }
 
 }

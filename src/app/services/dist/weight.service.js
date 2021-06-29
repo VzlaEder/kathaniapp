@@ -18,10 +18,13 @@ var WeightService = /** @class */ (function () {
         this.weightH.next(data);
     };
     WeightService.prototype.weightHistory = function () {
-        return this.httpService.get("movil-diabetic/register-weight");
+        return this.httpService.get('movil-diabetic/registerweight');
     };
     WeightService.prototype.weightUP = function (postData) {
-        return this.httpService.posttoken("movil-diabetic/register-weight", postData);
+        return this.httpService.posttoken('movil-diabetic/register-weight', postData);
+    };
+    WeightService.prototype.weightStatistics = function () {
+        return this.httpService.get('movil-diabetic/stadististic-weight');
     };
     WeightService = __decorate([
         core_1.Injectable({

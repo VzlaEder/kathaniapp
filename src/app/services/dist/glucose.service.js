@@ -23,6 +23,9 @@ var GlucoseService = /** @class */ (function () {
     GlucoseService.prototype.glucoseUP = function (postData) {
         return this.httpService.posttoken('movil-diabetic/register-glucose', postData);
     };
+    GlucoseService.prototype.glucoseStatistics = function () {
+        return this.httpService.get('movil-diabetic/stadististic-glucose');
+    };
     GlucoseService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
