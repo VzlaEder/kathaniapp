@@ -18,7 +18,7 @@ export class WeightService {
   }
 
   weightHistory(): Observable<any> {
-    return this.httpService.get('movil-diabetic/registerweight');
+    return this.httpService.get('movil-diabetic/register-weight');
   }
 
   weightUP(postData: weightI){

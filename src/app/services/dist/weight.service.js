@@ -18,7 +18,7 @@ var WeightService = /** @class */ (function () {
         this.weightH.next(data);
     };
     WeightService.prototype.weightHistory = function () {
-        return this.httpService.get('movil-diabetic/registerweight');
+        return this.httpService.get('movil-diabetic/register-weight');
     };
     WeightService.prototype.weightUP = function (postData) {
         return this.httpService.posttoken('movil-diabetic/register-weight', postData);
