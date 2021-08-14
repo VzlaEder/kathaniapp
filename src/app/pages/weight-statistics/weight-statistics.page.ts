@@ -84,7 +84,7 @@ export class WeightStatisticsPage implements OnInit {
           labels:this.labels,
           datasets: [
             {
-            label: 'Niveles de glucosa',
+            label: 'Peso en kg',
             fill: false,
             borderCapStyle:'butt',
             borderJoinStyle: 'miter',
@@ -102,10 +102,10 @@ export class WeightStatisticsPage implements OnInit {
             },
             title: {
               display: true,
-              text: 'Evolución de tu peso.'
+              text: 'Y: Peso en kg; X: Fechas de registro.'
             }
           }
-        },
+        }
       });
     });
   }

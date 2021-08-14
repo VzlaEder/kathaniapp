@@ -1,9 +1,7 @@
 {
   "name": "KA-THANI",
   "integrations": {
-    "capacitor": {
-      "enabled": false
-    },
+    "capacitor": {},
     "cordova": {}
   },
   "type": "angular"

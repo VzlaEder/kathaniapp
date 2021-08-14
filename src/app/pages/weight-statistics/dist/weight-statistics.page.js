@@ -34,7 +34,7 @@ var WeightStatisticsPage = /** @class */ (function () {
                     labels: _this.labels,
                     datasets: [
                         {
-                            label: 'Niveles de glucosa',
+                            label: 'Peso en kg',
                             fill: false,
                             borderCapStyle: 'butt',
                             borderJoinStyle: 'miter',
@@ -53,7 +53,7 @@ var WeightStatisticsPage = /** @class */ (function () {
                         },
                         title: {
                             display: true,
-                            text: 'Evolución de tu peso.'
+                            text: 'Y: Peso en kg; X: Fechas de registro.'
                         }
                     }
                 }
